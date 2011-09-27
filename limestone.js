@@ -12,41 +12,41 @@ exports.SphinxClient = function() {
 
     // All search modes
     Sphinx.searchMode = {
-        "ALL":0,
-        "ANY":1,
-        "PHRASE":2,
-        "BOOLEAN":3,
-        "EXTENDED":4,
-        "FULLSCAN":5,
-        "EXTENDED2":6    // extended engine V2 (TEMPORARY, WILL BE REMOVED)
+        "ALL"      : 0,
+        "ANY"      : 1,
+        "PHRASE"   : 2,
+        "BOOLEAN"  : 3,
+        "EXTENDED" : 4,
+        "FULLSCAN" : 5,
+        "EXTENDED2": 6    // extended engine V2 (TEMPORARY, WILL BE REMOVED)
     };
 
     // All ranking modes
     Sphinx.rankingMode = {
         "PROXIMITY_BM25": 0,    ///< default mode, phrase proximity major factor and BM25 minor one
-        "BM25": 1,    ///< statistical mode, BM25 ranking only (faster but worse quality)
-        "NONE": 2,    ///< no ranking, all matches get a weight of 1
-        "WORDCOUNT":3,    ///< simple word-count weighting, rank is a weighted sum of per-field keyword occurence counts
-        "PROXIMITY":4,
-        "MATCHANY" :5,
-        "FIELDMASK":6
+        "BM25"          : 1,    ///< statistical mode, BM25 ranking only (faster but worse quality)
+        "NONE"          : 2,    ///< no ranking, all matches get a weight of 1
+        "WORDCOUNT"     : 3,    ///< simple word-count weighting, rank is a weighted sum of per-field keyword occurence counts
+        "PROXIMITY"     : 4,
+        "MATCHANY"      : 5,
+        "FIELDMASK"     : 6
     };
 
     Sphinx.sortMode = {
-        "RELEVANCE": 0,
-        "ATTR_DESC": 1,
-        "ATTR_ASC": 2,
+        "RELEVANCE"    : 0,
+        "ATTR_DESC"    : 1,
+        "ATTR_ASC"     : 2,
         "TIME_SEGMENTS": 3,
-        "EXTENDED": 4,
-        "EXPR": 5
+        "EXTENDED"     : 4,
+        "EXPR"         : 5
     };
 
     Sphinx.groupMode = {
-        "DAY": 0,
-        "WEEK": 1,
-        "MONTH": 2,
-        "YEAR": 3,
-        "ATTR": 4,
+        "DAY"     : 0,
+        "WEEK"    : 1,
+        "MONTH"   : 2,
+        "YEAR"    : 3,
+        "ATTR"    : 4,
         "ATTRPAIR": 5
     };
 
@@ -65,21 +65,21 @@ exports.SphinxClient = function() {
     Sphinx.clientVersion = 0x118;
 
     Sphinx.statusCode = {
-        "OK":      0,
-        "ERROR":   1,
-        "RETRY":   2,
+        "OK"     : 0,
+        "ERROR"  : 1,
+        "RETRY"  : 2,
         "WARNING": 3
     };
 
     Sphinx.attribute = {
-        "INTEGER":        1,
-        "TIMESTAMP":      2,
-        "ORDINAL":        3,
-        "BOOL":           4,
-        "FLOAT":          5,
-        "BIGINT":         6,
-        "STRING":         7,
-        "MULTI":          1073741824 // 0x40000000
+        "INTEGER"  : 1,
+        "TIMESTAMP": 2,
+        "ORDINAL"  : 3,
+        "BOOL"     : 4,
+        "FLOAT"    : 5,
+        "BIGINT"   : 6,
+        "STRING"   : 7,
+        "MULTI"    : 1073741824 // 0x40000000
     };
 
     var server_conn;
