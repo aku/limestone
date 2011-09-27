@@ -105,8 +105,8 @@ exports.SphinxClient = function() {
             // sys.puts('Sending version number...');
             // Here we must send 4 bytes, '0x00000001'
             if (server_conn.readyState == 'open') {
-				var version_number = Buffer.makeWriter();
-				version_number.push.int32(1);
+                var version_number = Buffer.makeWriter();
+                version_number.push.int32(1);
                 server_conn.write(version_number.toBuffer());
 
                 // Waiting for answer
@@ -121,7 +121,7 @@ exports.SphinxClient = function() {
                     for (i = 0; i < receive_listeners.length; i++) {
                         server_conn.removeListener('data', receive_listeners[i]);
                     }
-					var protocol_version_raw = data.toReader();
+                    var protocol_version_raw = data.toReader();
                     var protocol_version = protocol_version_raw.int32();
                     var data_unpacked = {'': protocol_version};
 
@@ -226,24 +226,24 @@ exports.SphinxClient = function() {
 
          }  */
 
-		  var request = Buffer.makeWriter(); 
+          var request = Buffer.makeWriter(); 
 
       //Request header
       request.push.int16(Sphinx.command.SEARCH);
-	  request.push.int16(Sphinx.clientVersion);
-		
+      request.push.int16(Sphinx.clientVersion);
+        
       request.push.int32(0); // This will be request length
       request.push.int32(0); // Its a client
-	  request.push.int32(1); // Number of requests
-		  
+      request.push.int32(1); // Number of requests
+          
       //Request body
       request.push.int32(0); // request offst
-	  request.push.int32(100); // request limit
+      request.push.int32(100); // request limit
       
-	  request.push.int32(Sphinx.searchMode.ALL);  // search mode
-	  request.push.int32(Sphinx.rankingMode.BM25); // ranking mode		
-	  request.push.int32(Sphinx.sortMode.RELEVANCE); // sort mode
-  	  request.push.lstring(""); // "sort by" value
+      request.push.int32(Sphinx.searchMode.ALL);  // search mode
+      request.push.int32(Sphinx.rankingMode.BM25); // ranking mode        
+      request.push.int32(Sphinx.sortMode.RELEVANCE); // sort mode
+        request.push.lstring(""); // "sort by" value
 
       request.push.lstring(query); // Query text
 
@@ -285,7 +285,7 @@ exports.SphinxClient = function() {
 
       request.push.int32(0); // Max query time is set to 0
 
-		  request.push.lstring(""); // num field weights (not supported)
+          request.push.lstring(""); // num field weights (not supported)
 
       request.push.lstring(query_parameters.comment); // Comments is not supported yet
 
@@ -321,7 +321,7 @@ exports.SphinxClient = function() {
             parseHeader : function() {
                 if (this.status === null && this.data.length >= 8) {
                     // console.log('Answer length: ' + (this.data.length));
-					var decoder = this.data.toReader();
+                    var decoder = this.data.toReader();
                     // var decoder = new bits.Decoder(this.data);
 
                     this.status  = decoder.int16();
@@ -329,7 +329,7 @@ exports.SphinxClient = function() {
                     this.length  = decoder.int32();
                     // console.log('Receiving answer with status ' + this.status + ', version ' + this.version + ' and length ' + this.length);
 
-					this.data = this.data.slice(8, this.data.length);
+                    this.data = this.data.slice(8, this.data.length);
                     // this.data = decoder.string(this.data.length - 8);
                 }
             },
